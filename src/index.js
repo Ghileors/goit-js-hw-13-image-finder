@@ -32,8 +32,18 @@ function fetchImg() {
 
   imgService.fetchImg().then(hits => {
     updateImgMarkup(hits);
+
     loadMoreBtn.show();
     loadMoreBtn.enable();
+
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth',
+    });
+
+    if (hits.length < 12) {
+      loadMoreBtn.hide();
+    }
   });
 }
 
